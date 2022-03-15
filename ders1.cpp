@@ -18,7 +18,7 @@ void func2(int a)
 void func3()
 {
     int x;
-    int y = x;  //undefined behavior olur bu sebele x'e initalization 
+    int y = x;  //undefined behavior olur bu sebeble x'e initalization 
                 //value vermemmiz gerekir 
 }
 
