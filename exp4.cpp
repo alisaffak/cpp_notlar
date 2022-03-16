@@ -3,14 +3,14 @@
 //pointer ve boyut parametreleri ile fonksiyonun içinde bellek alanı oluşturup, dizinin
 //elemanlarını 0'dan başlayarak 255'e kadar dolduracaksınız. 255'ten büyük bir dizi olması
 //durumunda elemanın değeri 0 olacak. Fonksiyondan çıktıktan sonra parametre olarak verdiğiniz
-//pointer'daki tüm elemanları ekrana bastırın.
+//pointer'daki tüm elemanları ekrana bastırın..
 
 #include <iostream>
 #include "stdio.h"
 
 using namespace std;
 
-void func(unsigned char** ptr, int &size ){
+void func(const unsigned char**  const ptr, const int &size ){
     size = 300;
     *ptr = new unsigned char[size];
     auto temp = *ptr;
@@ -21,7 +21,7 @@ void func(unsigned char** ptr, int &size ){
 
 int main()
 {
-    unsigned char* a = NULL;
+    unsigned char* a = nullptr;
     int size = 0;
     func(&a,size);
 

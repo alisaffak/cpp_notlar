@@ -1,2 +1,2 @@
 # cpp_notlar
-tesstt ersin bey
+C++ kursundaki örnekler

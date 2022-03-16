@@ -5,7 +5,7 @@
 using namespace std;
 
 char* allocate_memory(int size){
-    char* elements = new char[size];;
+    char* elements = new char[size];
 
     return elements;
 

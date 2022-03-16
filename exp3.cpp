@@ -12,29 +12,23 @@ int main()
    unsigned char *even_number = nullptr, *odd_number = nullptr;
    unsigned char evncnt=0, oddcnt=0;
 
-//   even_number = (unsigned char*) malloc(1*sizeof(unsigned char));
-//   odd_number = (unsigned char*) malloc(1*sizeof(unsigned char));
-
    for(unsigned char i = 0; i < DATA; i++){
 
-       if(source[i] % 2 == 0){
-           //          evncnt++;
-           even_number = (unsigned char*) realloc(even_number, ++evncnt);
-           even_number[evncnt-1] = source[i];
-       }
-       else if(source[i] % 2 != 0){
-           //          oddcnt++;
-           odd_number =                       (unsigned char*) realloc(odd_number, ++oddcnt);
+        if(source[i] % 2 == 0){      
+           
+            even_number = (unsigned char*) realloc(even_number, ++evncnt);
+            even_number[evncnt-1] = source[i];
+        }
+        else if(source[i] % 2 != 0){
+           
+           odd_number = (unsigned char*) realloc(odd_number, ++oddcnt);
            odd_number[oddcnt-1] = source[i];
-       }
-   }
+        }
+    }
 
-   for(int i=0; i <oddcnt; i++)
+    for(int i=0; i <oddcnt; i++)
         cout<<"odd number: "<< (int)odd_number[i]<<"\n";
-
-
-   for(int i=0; i < evncnt; i++)
-        cout<<"even number: "<< (int)even_number[i]<<"\n";
-
-
+   
+    for(int i=0; i < evncnt; i++)
+        cout<<"even number: "<< (int)even_number[i]<<"\n";        
 }
