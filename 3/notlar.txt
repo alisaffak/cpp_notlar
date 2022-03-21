@@ -1,0 +1,159 @@
+C++ dilinde elemanları referans olan diziler oluşturuamaz ama pointerlardan oluşan
+diziler oluşturulabilir.
+
+    int* ptr[10];
+===========================================
+    örn:
+//a' nın değerini 45 yapar
+
+    int& foo(int& x)
+    {
+        return x;
+    }
+    
+    int main(){
+        int a = 10;
+        int& r = foo(a);
+
+        r = 45; 
+    }
+===========================================
+
+    örn:
+    //x değişkenin değeri bir artar.
+
+    int main{
+        int x = 10;
+        int* ptr{ x };
+        int& ptr{ *ptr };
+
+        ++r;
+    }
+===========================================
+
+Expressions
+                    C             C++
+++x                 R              L
+--x                 R              L
+(x,y)               R              L
+a > 5 ? x : y       R              L
+atama               R              L
+
+===========================================
+
+C++'da makrolar kullanılmak pek istenmez
+#define ..... vb gibi
+C++'da NULL makrosu yerine nullptr kullanılmalıdır.
+false -> sabit(constant), türü bool
+nullptr -> sabit, anahttar sözcük, türü nullptr_t(cstddef kaynak dosyasında bulunur)
+
+int *p = nullptr;
+if(p) yazmak ile if(p != nullptr) yazmak aynı anlama gelir
+if(p == nullptr) yazmak ile if(!p) yazmak aynı anlama gelir.
+
+int* türünden double* türüne örtülü dönüşüm yoktur.
+===========================================
+
+referanslar ve const semantiği
+
+bir kodun güvenilirliği ve kaliteliliği const correctless(const doğruluğu)'a bağlıdır.
+
+int* const p = &x; //(cost pointer)p hep x'i referans almak zorunda ama p'nin değeri değişebilir
+*p = 8723
+
+const sözcüğü başa gelirse:
+
+int x = 10;
+int y = 20;
+
+const *int * p = &x; //pointer to const(low level const) böyle bir durumda *P değişkeninin 
+                       değerini değitiremeyiz ama aldığı adresi değiştirebiliriz
+p = &y;
+int val = *p;
+===========================================
+
+T bir tür olsun
+
+void func(T *ptr); mutater fonksiyonu yani adresini aldığı nesneyi
+                   değiştirmeye yöneliktir. Parametresine genelde output parametresi denir.
+
+void foo(const T *ptr); Aynı gibi gözükse de çok farklı şekilde çalışır. Gelen nesneyi
+                        sadece okuma amaçlı olan bir fonksiyondur. Gelen nesneyi 
+                        değiştirmez. (Accesser)
+
+Bir fonksiyon salt okuma yapmak istiyorsak kesinlikle o fonksiyonun parametresini 
+void func(T *p) yapmamak gerekir. Yanlışlıkla nesneyi değiştirsek syntax hatası almayız.
+const bir nesneyle çağrı yapıldığında ise hata verir.
+
+void print_array(const *int ptr, size_t size)
+{
+    *ptr = 12; (const verdiğimiz için böyle bir atama yapamayız ve bu bizim kodumuzu 
+                olabilecek bir çok hatadan koruyabilir.)
+}
+
+void func(T &r); ile void foo(T *ptr); komple aynı anlama gelir. 
+===========================================
+int x = 10;
+
+int const & r = x; //const reference
+const int & r = x; //const reference  (ikisi de aynı anlama gelir)
+r = 23; hata verir çünkü değeri sadece okuyabiliriz ama değiştiremeyiz
+int i = r; bunda bir sakınca yoktur.
+===========================================
+
+int & const r = x; bir referans başka bir nesnenin yerine geçemez bu yüzden oraya  const
+                   koymak gereksizdir derleyici o kodu yazılmamış olarak görür.
+===========================================
+
+int a[0];
+int* ptr(a);
+
+int& r = *ptr;   ile int &r = a[0]; aynı anlama gelir
+int*& r = ptr: burada r yi ptr'ye bind ettik,
+
+===========================================
+
+int a[5] = {1,4,7,8,9};
+int* ptr = a; burada ptr a'nın ilk elemanındaki değeri verir.
+===========================================
+
+öyle bir pointer değişken tanımlayın ki ismi ptr olsun yani *ptr a dizisinin kendisi olsun
+int a[5] = {1,4,7,8,9};
+int (*ptr)[5] = &a;       
+===========================================
+int a[5] = {1,4,7,8,9};
+int(&ra)[5] = a;
+
+for(int i  = 0; i < 5; i++)
+    ++ra[i];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
